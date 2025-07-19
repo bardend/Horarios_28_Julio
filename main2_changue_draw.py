@@ -43,7 +43,8 @@ if not nombres:
     exit()
 
 # Crear grupos
-num_grupos = (len(nombres) + 4) // 5
+#num_grupos = (len(nombres) + 4) // 5
+num_grupos = 4
 grupos = [[] for _ in range(num_grupos)]
 partidos = []
 
@@ -86,13 +87,13 @@ import datetime
 # Definir la duración de cada partido en minutos
 DURACION_PARTIDO = 30  # Puedes cambiar este valor a 20, 30, 40, etc.
 
-def draw_partidos(partidos):
-    print(f"Dibujando {len(partidos)} partidos")
-    
-    pygame.time.wait(10000)
+def draw_partidos(partidos, is_first = False):
 
-    # Limpiar pantalla completamente
-    screen.fill(WHITE)
+    if is_first :
+        print(f"Dibujando {len(partidos)} partidos")
+        pygame.time.wait(10000)
+        # Limpiar pantalla completamente
+        screen.fill(WHITE)
     
     partido_font = pygame.font.Font(None, 32)
     partido_width = (WIDTH - 100) // 4
@@ -167,6 +168,8 @@ def main():
     match = []
     random_grup = []
     vis = [[[False for _ in range(maxn)] for _ in range(maxn)] for _ in range(maxn)]
+
+    is_first = True
     while running:
         mouse_pos = pygame.mouse.get_pos()
 
@@ -188,11 +191,11 @@ def main():
         screen.fill(WHITE)
 
         # Título
-        title = title_font.render("Asignación de Grupos", True, BLACK)
-        screen.blit(title, (WIDTH // 2 - title.get_width() // 2, 20))
-
-        draw_groups()
-        draw_button(mouse_pos)
+        if is_first :
+            title = title_font.render("Asignación de Grupos", True, BLACK)
+            screen.blit(title, (WIDTH // 2 - title.get_width() // 2, 20))
+            draw_groups()
+            draw_button(mouse_pos)
 
         if current_name_index < len(nombres):
             text = font.render(f"Próximo: {nombres[current_name_index]}", True, BLACK)
@@ -202,6 +205,7 @@ def main():
             screen.blit(text, (WIDTH // 2 - text.get_width() // 2, HEIGHT - 120))
 
         pygame.display.flip()
+
         if current_name_index == len(nombres) :
             n_grupos = len(grupos)
 
@@ -340,8 +344,10 @@ def main():
                 if(target == prueba and cnt == len(partidos)) :
                     print("Tamos good" )
                 end_partidos = 1
+
         if end_partidos :
-            draw_partidos(partidos)
+            draw_partidos(partidos, is_first)
+            is_first = False
 
 
         pygame.time.wait(1000)  # Espera 100 milisegundos
