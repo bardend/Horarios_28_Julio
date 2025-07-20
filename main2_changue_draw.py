@@ -90,10 +90,44 @@ DURACION_PARTIDO = 30  # Puedes cambiar este valor a 20, 30, 40, etc.
 def draw_partidos(partidos, is_first = False):
 
     if is_first :
-        print(f"Dibujando {len(partidos)} partidos")
-        pygame.time.wait(10000)
-        # Limpiar pantalla completamente
+        # Definir el botón
+        button_width = 200
+        button_height = 50
+        button_x = (WIDTH - button_width) // 2
+        button_y = (HEIGHT - button_height) // 2
+
+        waiting_for_click = True
+        while waiting_for_click:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_x, mouse_y = event.pos
+                    # Verificar si el clic está dentro del botón
+                    if button_x <= mouse_x <= button_x + button_width and button_y <= mouse_y <= button_y + button_height:
+                        waiting_for_click = False
+            
+            
+            # Dibujar el botón
+            pygame.draw.rect(screen, (70, 130, 180), (button_x, button_y, button_width, button_height))
+            pygame.draw.rect(screen, (50, 50, 50), (button_x, button_y, button_width, button_height), 2)
+            
+            # Texto del botón
+            font = pygame.font.Font(None, 24)
+            text = font.render("Generar Partidos", True, WHITE)
+            text_rect = text.get_rect(center=(button_x + button_width // 2, button_y + button_height // 2))
+            screen.blit(text, text_rect)
+            
+            pygame.display.flip()
+            pygame.time.wait(50)
         screen.fill(WHITE)
+
+    # if is_first :
+    #     print(f"Dibujando {len(partidos)} partidos")
+    #     pygame.time.wait(10000)
+    #     # Limpiar pantalla completamente
+    #     screen.fill(WHITE)
     
     partido_font = pygame.font.Font(None, 32)
     partido_width = (WIDTH - 100) // 4
