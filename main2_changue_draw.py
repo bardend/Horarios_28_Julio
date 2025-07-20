@@ -133,11 +133,7 @@ def draw_partidos(partidos, is_first = False):
     partido_height = 70
 
     # Mover los partidos más arriba en la pantalla
-    y_offset = 100  # Reducir este valor para subir más los partidos
-
-    title = title_font.render("Partidos", True, BLACK)
-    screen.blit(title, (WIDTH // 2 - title.get_width() // 2, y_offset - 60))
-
+    y_offset = 20  # Reducir este valor para subir más los partidos
     # Resto del código de draw_partidos permanece igual...
     hora_inicio = datetime.datetime(2024, 7, 21, 8, 0)
     intervalo = datetime.timedelta(minutes=DURACION_PARTIDO)
