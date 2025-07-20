@@ -2,6 +2,8 @@
 
 Generar el cronograma de partidos del 28 de Julio en Huancani.
 
+## Usuarios Linux
+
 #### Pasos a seguir :
 
 ```py
@@ -26,5 +28,25 @@ Edita ``nombres.txt`` de acuerdo a los equipos que se inscribieron :
 
 ```bash
 python3 main2_changue_draw.py
+```
+
+## Usuarios Windows
+
+#### Pasos a aseguir
+
+```
+Descargas en zip, te situas en la carpeta
+```
+
+Abre ``CMD`` o  ```PowerShell```
+
+```py 
+python3 start.py
+```
+
+si no funciona
+
+```py
+python start.py
 ```
 
