@@ -60,7 +60,6 @@ random.shuffle(to_shuffle)
 nombres = before_shuffle + to_shuffle
 
 
-
 # Botón
 button_rect = pygame.Rect(WIDTH // 2 - 225, HEIGHT - 200, 550, 150)
 
@@ -129,8 +128,8 @@ def draw_partidos(partidos, is_first = False):
     #     # Limpiar pantalla completamente
     #     screen.fill(WHITE)
     
-    partido_font = pygame.font.Font(None, 32)
-    partido_width = (WIDTH - 100) // 4
+    partido_font = pygame.font.Font(None, 24)
+    partido_width = (WIDTH - 350) // 4
     partido_height = 70
 
     # Mover los partidos más arriba en la pantalla
@@ -151,14 +150,14 @@ def draw_partidos(partidos, is_first = False):
         col = i % 4
         row = i // 4
 
-        x = 50 + col * (partido_width + 20)
+        x = 60 + col * (partido_width + 20)
         y = y_offset + row * (partido_height + 10)
 
         bg_rect = pygame.Rect(x, y, partido_width, partido_height)
         pygame.draw.rect(screen, GRAY, bg_rect)
         pygame.draw.rect(screen, BLACK, bg_rect, 2)
 
-        if hora_actual.time() > datetime.time(17, 30):
+        if hora_actual.time() > datetime.time(17, 0):
             hora_actual += datetime.timedelta(days=1)
             hora_actual = hora_actual.replace(hour=8, minute=0)
 
