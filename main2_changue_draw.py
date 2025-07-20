@@ -159,18 +159,14 @@ def draw_partidos(partidos, is_first = False):
 
         hora_str = hora_actual.strftime("%d/%m %I:%M %p")
 
-        num_text = partido_font.render(f"{i + 1}.", True, BLACK)
-        screen.blit(num_text, (x + 5, y + 5))
-
-        grupo_letra = chr(65 + g)
-        texto1 = f"G{grupo_letra}: {equipo1} vs {equipo2}"
+        texto1 = f"{equipo1} vs {equipo2}"
         texto2 = f"Hora: {hora_str}"
 
         text1 = partido_font.render(texto1, True, BLACK)
         text2 = partido_font.render(texto2, True, BLACK)
 
-        screen.blit(text1, (x + 40, y + 5))
-        screen.blit(text2, (x + 40, y + 22))
+        screen.blit(text1, (x + 5, y + 5))
+        screen.blit(text2, (x + 5, y + 22))
 
         hora_actual += intervalo
 
