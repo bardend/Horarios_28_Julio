@@ -130,10 +130,10 @@ def draw_partidos(partidos, is_first = False):
     
     partido_font = pygame.font.Font(None, 24)
     partido_width = (WIDTH - 350) // 4
-    partido_height = 70
+    partido_height = 60
 
     # Mover los partidos más arriba en la pantalla
-    y_offset = 20  # Reducir este valor para subir más los partidos
+    y_offset = 10  # Reducir este valor para subir más los partidos
     # Resto del código de draw_partidos permanece igual...
     hora_inicio = datetime.datetime(2024, 7, 21, 8, 0)
     intervalo = datetime.timedelta(minutes=DURACION_PARTIDO)
@@ -153,7 +153,7 @@ def draw_partidos(partidos, is_first = False):
         pygame.draw.rect(screen, GRAY, bg_rect)
         pygame.draw.rect(screen, BLACK, bg_rect, 2)
 
-        if hora_actual.time() > datetime.time(17, 0):
+        if hora_actual.time() > datetime.time(17, 30):
             hora_actual += datetime.timedelta(days=1)
             hora_actual = hora_actual.replace(hour=8, minute=0)
 
