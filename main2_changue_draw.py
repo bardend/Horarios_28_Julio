@@ -135,7 +135,8 @@ def draw_partidos(partidos, is_first = False):
     # Mover los partidos más arriba en la pantalla
     y_offset = 10  # Reducir este valor para subir más los partidos
     # Resto del código de draw_partidos permanece igual...
-    hora_inicio = datetime.datetime(2024, 7, 21, 8, 0)
+    hora_inicio = datetime.datetime(2025, 7, 27, 8, 0)
+
     intervalo = datetime.timedelta(minutes=DURACION_PARTIDO)
 
     hora_actual = hora_inicio
@@ -237,17 +238,9 @@ def main():
             max_len = max(len(grupo) for grupo in grupos)
 
             if ok :
-                """
-                for i in range(max_len):
-                    for j in range(i+1, max_len):
-                        match.append((i, j))
-
-                random.shuffle(match)
-                """
                 tmp_match = f(max_len)
+                print(tmp_match)
                 match = tmp_match
-
-
 
 
                 tmp = [i for i in range(n_grupos)]
@@ -370,7 +363,16 @@ def main():
                     print("Tamos good" )
                 end_partidos = 1
 
+
         if end_partidos :
+
+
+            for i, (g, id1, id2) in enumerate(partidos):
+                equipo1 = grupos[g][id1]
+                equipo2 = grupos[g][id2]
+                print(g, equipo1, equipo2)
+
+
             draw_partidos(partidos, is_first)
             is_first = False
 
