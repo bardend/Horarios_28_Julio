@@ -130,7 +130,7 @@ def draw_partidos(partidos, is_first = False):
     
     partido_font = pygame.font.Font(None, 24)
     partido_width = (WIDTH - 350) // 4
-    partido_height = 60
+    partido_height = 45
 
     # Mover los partidos más arriba en la pantalla
     y_offset = 10  # Reducir este valor para subir más los partidos
@@ -170,7 +170,7 @@ def draw_partidos(partidos, is_first = False):
         text2 = partido_font.render(texto2, True, BLACK)
 
         screen.blit(text1, (x + 40, y + 5))
-        screen.blit(text2, (x + 40, y + 35))
+        screen.blit(text2, (x + 40, y + 22))
 
         hora_actual += intervalo
 
